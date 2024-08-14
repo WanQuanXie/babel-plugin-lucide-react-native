@@ -1,0 +1,46 @@
+{
+  "name": "babel-plugin-lucide-react-native",
+  "version": "0.0.1",
+  "description": "lucide-react-native modularized builds without the hassle",
+  "repository": "WanQuanXie/babel-plugin-lucide-react-native",
+  "author": "Elvis (github.com/WanQuanXie)  <i2cherry941219@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "homepage": "https://github.com/WanQuanXie/babel-plugin-lucide-react-native",
+  "scripts": {
+    "build": "kcd-scripts build",
+    "lint": "kcd-scripts lint",
+    "test": "kcd-scripts test",
+    "test:update": "npm test -- --updateSnapshot --coverage",
+    "typecheck": "kcd-scripts typecheck",
+    "validate": "kcd-scripts validate"
+  },
+  "keywords": [
+    "lucide",
+    "lucide-react-native",
+    "modularize",
+    "babel-plugin",
+    "react-native"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "kcd-scripts": "^16.0.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.25.0"
+  }
+}
