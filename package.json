@@ -2,7 +2,10 @@
   "name": "babel-plugin-lucide-react-native",
   "version": "0.0.1",
   "description": "lucide-react-native modularized builds without the hassle",
-  "repository": "WanQuanXie/babel-plugin-lucide-react-native",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/WanQuanXie/babel-plugin-lucide-react-native.git"
+  },
   "author": "Elvis (github.com/WanQuanXie)  <i2cherry941219@gmail.com>",
   "license": "MIT",
   "main": "dist/index.js",
