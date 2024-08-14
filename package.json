@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-lucide-react-native",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "lucide-react-native modularized builds without the hassle",
   "repository": {
     "type": "git",
