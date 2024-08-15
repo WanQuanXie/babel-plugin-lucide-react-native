@@ -29,7 +29,7 @@ export default function lucideReactNativeImport({
         );
 
         if (
-          nodeSourceValue.startsWith(LUCIDE_REACT_NATIVE) &&
+          nodeSourceValue === LUCIDE_REACT_NATIVE &&
           nodeNamedSpecifiers.length !== 0
         ) {
           path.replaceWithMultiple([
