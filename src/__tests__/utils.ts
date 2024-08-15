@@ -98,6 +98,17 @@ const allPatternMatch: PatternMatch<keyof UtilsModel> = {
       });
     });
   },
+  generateUnknownIconError: (generateUnknownIconError) => {
+    describe("generateUnknownIconError", () => {
+      it("should return an error message with a specific icon name", () => {
+        const iconName = "unknownIcon";
+        const error = generateUnknownIconError(iconName);
+        expect(error).toEqual(
+          `lucide icon ${iconName} was not a known icon. Please file a bug if it's my fault https://github.com/WanQuanXie/babel-plugin-lucide-react-native/issues`
+        );
+      });
+    });
+  },
 };
 
 describe("utils.ts tests", () => {
