@@ -1,8 +1,8 @@
-# babel-plugin-lucide-react-native
+[![GitHub License](https://img.shields.io/github/license/WanQuanXie/babel-plugin-lucide-react-native?style=flat-square&logo=github)](https://github.com/WanQuanXie/babel-plugin-lucide-react-native?tab=MIT-1-ov-file)
+[![Codecov (with branch)](https://img.shields.io/codecov/c/github/WanQuanXie/babel-plugin-lucide-react-native/main?token=4X2JMZOUIS&style=flat-square&logo=codecov)](https://codecov.io/github/WanQuanXie/babel-plugin-lucide-react-native)
+[![NPM Version](https://img.shields.io/npm/v/babel-plugin-lucide-react-native?style=flat-square&logo=npm&logoColor=%23CB3837)](https://www.npmjs.com/package/babel-plugin-lucide-react-native)
 
-[![GitHub License](https://img.shields.io/github/license/WanQuanXie/babel-plugin-lucide-react-native?logo=github)](https://github.com/WanQuanXie/babel-plugin-lucide-react-native?tab=MIT-1-ov-file)
-[![codecov](https://codecov.io/github/WanQuanXie/babel-plugin-lucide-react-native/graph/badge.svg?token=4X2JMZOUIS)](https://codecov.io/github/WanQuanXie/babel-plugin-lucide-react-native)
-[![NPM Version](https://img.shields.io/npm/v/babel-plugin-lucide-react-native?registry_uri=https%3A%2F%2Fregistry.npmjs.com&logo=npm&logoColor=%23CB3837)](https://www.npmjs.com/package/babel-plugin-lucide-react-native)
+# babel-plugin-lucide-react-native
 
 > &#x26A0;&#xFE0F;**WARNING:** This plugin is work in progress and may not be stable. Use at your own risk.<br/>
 > 👏 Welcome to contribute to this project!
