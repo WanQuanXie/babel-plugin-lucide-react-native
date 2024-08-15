@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - lts/Iron
+cache:
+  directories:
+    - node_modules
+install:
+  - npm install
+git:
+  depth: 1
