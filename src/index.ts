@@ -23,28 +23,32 @@ export default function lucideReactNativeImport({
         const nodeSourceValue = path.node.source.value;
         const nodeSpecifiers = path.node.specifiers;
 
-        const [nodeDefaultSpecifiers, nodeNamedSpecifiers] = partition(
-          nodeSpecifiers,
-          (specifier) => t.isImportDefaultSpecifier(specifier)
-        );
+        if (nodeSourceValue === LUCIDE_REACT_NATIVE) {
+          const [nodeDefaultSpecifiers, nodeNamedSpecifiers] = partition(
+            nodeSpecifiers,
+            (specifier) => t.isImportDefaultSpecifier(specifier)
+          );
 
-        if (
-          nodeSourceValue === LUCIDE_REACT_NATIVE &&
-          nodeNamedSpecifiers.length !== 0
-        ) {
-          path.replaceWithMultiple([
-            ...nodeDefaultSpecifiers.map((specifier) =>
-              t.importDeclaration([specifier], t.stringLiteral(nodeSourceValue))
-            ),
-            ...nodeNamedSpecifiers.map((specifier) => {
-              const resolvedPath = resolveModule(useES, specifier.local.name);
+          if (nodeDefaultSpecifiers.length > 0) {
+            throw new Error(
+              `\`import ${nodeDefaultSpecifiers[0]} from "${LUCIDE_REACT_NATIVE}"\` defeats the purpose of babel-plugin-${LUCIDE_REACT_NATIVE}`
+            );
+          }
 
-              return t.importDeclaration(
-                [t.importDefaultSpecifier(specifier.local)],
-                t.stringLiteral(resolvedPath)
-              );
-            }),
-          ]);
+          if (nodeNamedSpecifiers.length > 0) {
+            const namedImportDeclarations = nodeNamedSpecifiers.map(
+              (specifier) => {
+                const resolvedPath = resolveModule(useES, specifier.local.name);
+
+                return t.importDeclaration(
+                  [t.importDefaultSpecifier(specifier.local)],
+                  t.stringLiteral(resolvedPath)
+                );
+              }
+            );
+
+            path.replaceWithMultiple(namedImportDeclarations);
+          }
         }
       },
     },
