@@ -4,6 +4,11 @@
 [![codecov](https://codecov.io/github/WanQuanXie/babel-plugin-lucide-react-native/graph/badge.svg?token=4X2JMZOUIS)](https://codecov.io/github/WanQuanXie/babel-plugin-lucide-react-native)
 [![NPM Version](https://img.shields.io/npm/v/babel-plugin-lucide-react-native?registry_uri=https%3A%2F%2Fregistry.npmjs.com&logo=npm&logoColor=%23CB3837)](https://www.npmjs.com/package/babel-plugin-lucide-react-native)
 
+> &#x26A0;&#xFE0F;**WARNING:** This plugin is work in progress and may not be stable. Use at your own risk.<br/>
+> 👏 Welcome to contribute to this project!
+
+## 📖 Documentation
+
 This plugin is a transform to remove unused lucide icon dependencies in React Native, without forcing the user to cherry pick methods manually. This lets you use lucide-react-native naturally (aka as documented) without worrying about bundling parts you're not using.
 
 #### Example
@@ -75,4 +80,8 @@ or
 }
 ```
 
-when `useES` is set to `true`, it will use `lucide-react-native/dist/esm/` instead of `lucide-react-native/dist/cjs/`. Default is `false`.
+when `useES` is set to `true`, it will use `lucide-react-native/dist/esm/` instead of `lucide-react-native/dist/cjs/`. **Default:** `false`.
+
+---
+
+### Inspired by [babel-plugin-ramda](https://github.com/megawac/babel-plugin-ramda)
