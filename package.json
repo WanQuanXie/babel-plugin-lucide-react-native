@@ -27,6 +27,7 @@
     "build": "kcd-scripts build",
     "lint": "kcd-scripts lint",
     "test": "kcd-scripts test",
+    "test:cov": "npm test -- --coverage",
     "test:update": "npm test -- --updateSnapshot --coverage",
     "typecheck": "kcd-scripts typecheck",
     "validate": "kcd-scripts validate"
