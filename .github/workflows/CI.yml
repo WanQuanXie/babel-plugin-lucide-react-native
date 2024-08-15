@@ -1,20 +1,29 @@
-name: Test
-on: [push, pull_request, workflow_dispatch]
+name: Run tests and upload coverage
+
+on: [push, pull_request]
+
 jobs:
   test:
+    name: Run tests and collect coverage
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
           node-version: "lts/Iron"
-      - name: Install
+
+      - name: Install dependencies
         run: npm install
-      - name: Test and Coverage
+
+      - name: Run tests
         run: npm run test:cov
 
-      - name: Update Coverage Badge
-        # GitHub actions: default branch variable
-        # https://stackoverflow.com/questions/64781462/github-actions-default-branch-variable
-        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
-        uses: we-cli/coverage-badge-action@main
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
