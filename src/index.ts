@@ -1,7 +1,7 @@
 import type babelCore from "@babel/core";
 import { partition } from "./utils";
 import { LUCIDE_REACT_NATIVE } from "./const";
-import resolveModule from "./modules";
+import { resolveModule } from "./modules";
 
 type Core = typeof babelCore;
 

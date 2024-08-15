@@ -5,7 +5,7 @@ import { LUCIDE_REACT_NATIVE } from "./const";
 
 const appDirectory = fs.realpathSync(process.cwd());
 
-const resolveApp = (relativePath: string) =>
+export const resolveApp = (relativePath: string) =>
   path.resolve(appDirectory, relativePath);
 
 const lucidePath = resolveApp(`node_modules/${LUCIDE_REACT_NATIVE}/dist`);
@@ -15,13 +15,12 @@ const icons = fs
   .filter((name) => path.extname(name) === ".js")
   .map((name) => path.basename(name, ".js"));
 
-const camel2Dash = (str: string) =>
-  str.replace(
-    /[A-Z|0-9]/g,
-    (match, offset) => (offset > 0 ? "-" : "") + match.toLowerCase()
-  );
+export const camel2Dash = (str: string) =>
+  str
+    .replace(/([A-Z]|[0-9]+)/g, (match) => "-" + match.toLowerCase())
+    .replace(/^-/, "");
 
-export default function resolveModule(useES: boolean, name: string) {
+export const resolveModule = (useES: boolean, name: string) => {
   const iconFileName = camel2Dash(name);
 
   if (icons.includes(iconFileName)) {
@@ -31,4 +30,4 @@ export default function resolveModule(useES: boolean, name: string) {
   throw new Error(`lucide icon ${name} was not a known icon
     Please file a bug if it's my fault https://github.com/WanQuanXie/babel-plugin-lucide-react-native/issues
   `);
-}
+};
