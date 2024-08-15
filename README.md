@@ -1,6 +1,6 @@
 # babel-plugin-lucide-react-native
 
-[![Codecov](https://img.shields.io/codecov/c/github/WanQuanXie/main)](https://github.com/WanQuanXie/babel-plugin-lucide-react-native/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/WanQuanXie/main)](https://codecov.io/gh/WanQuanXie/babel-plugin-lucide-react-native)
 
 This plugin is a transform to remove unused lucide icon dependencies in React Native, without forcing the user to cherry pick methods manually. This lets you use lucide-react-native naturally (aka as documented) without worrying about bundling parts you're not using.
 
