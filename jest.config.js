@@ -4,6 +4,12 @@ const { jest: jestConfig } = require("kcd-scripts/config");
  *  @type {import('@jest/types').Config.InitialOptions}
  */
 const customJestConfig = {
+  coverageReporters: [
+    "clover",
+    ["json", { file: "coverage-summary.json" }],
+    "lcov",
+    "text",
+  ],
   coverageThreshold: {
     global: {
       statements: 90,
