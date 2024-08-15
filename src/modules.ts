@@ -2,28 +2,30 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { LUCIDE_REACT_NATIVE } from "./const";
-import { camel2Dash } from "./utils";
+import { camel2Dash, generateUnknownIconError } from "./utils";
 
 const appRealDirectory = fs.realpathSync(process.cwd());
 
+const iconFileSubRelativePath = `${LUCIDE_REACT_NATIVE}/dist`;
+const iconFileRelativePath = `node_modules/${iconFileSubRelativePath}`;
+
 const lucideIconsRealPath = path.resolve(
   appRealDirectory,
-  `node_modules/${LUCIDE_REACT_NATIVE}/dist`
+  iconFileRelativePath
 );
-
-const icons = fs
-  .readdirSync(path.join(lucideIconsRealPath, "esm/icons"))
-  .filter((name) => path.extname(name) === ".js")
-  .map((name) => path.basename(name, ".js"));
 
 export const resolveModule = (useES: boolean, name: string) => {
   const iconFileName = camel2Dash(name);
+  const moduleDir = useES ? "esm" : "cjs";
+
+  const icons = fs
+    .readdirSync(path.join(lucideIconsRealPath, `${moduleDir}/icons`))
+    .filter((name) => path.extname(name) === ".js")
+    .map((name) => path.basename(name, ".js"));
 
   if (icons.includes(iconFileName)) {
-    return `${LUCIDE_REACT_NATIVE}/dist/${useES ? "esm" : "cjs"}/icons/${iconFileName}`;
+    return `${iconFileSubRelativePath}/${moduleDir}/icons/${iconFileName}`;
   }
 
-  throw new Error(`lucide icon ${name} was not a known icon
-    Please file a bug if it's my fault https://github.com/WanQuanXie/babel-plugin-lucide-react-native/issues
-  `);
+  throw new Error(generateUnknownIconError(name));
 };
