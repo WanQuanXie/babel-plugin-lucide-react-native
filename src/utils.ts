@@ -1,11 +1,33 @@
-export const partition = <T extends any = any>(
-  arr: T[],
-  fn: (item: T) => boolean
-): [T[], T[]] => {
-  const [pass, fail] = [[], []] as [T[], T[]];
-  arr.forEach((item) => (fn(item) ? pass.push(item) : fail.push(item)));
-  return [pass, fail];
-};
+export function partition<T, S extends T>(
+  list: readonly T[],
+  fn: (a: T) => a is S
+): [S[], Exclude<T, S>[]];
+export function partition<T, S extends T>(
+  list: readonly T[],
+  fn: (a: T) => boolean
+): [T[], T[]];
+export function partition<T, S extends T>(
+  list: readonly T[],
+  fn: ((a: T) => a is S) | ((a: T) => boolean)
+): [T[], T[]];
+export function partition<T, S extends T>(
+  list: readonly T[],
+  fn: ((a: T) => a is S) | ((a: T) => boolean)
+) {
+  const [pass, fail]: [any[], any[]] = [[], []];
+  list.forEach((item) => (fn(item) ? pass.push(item) : fail.push(item)));
+
+  return list.reduce<[unknown[], unknown[]]>(
+    ([left, right], item) => {
+      if (fn(item)) {
+        return [[...left, item], right];
+      } else {
+        return [left, [...right, item]];
+      }
+    },
+    [[], []]
+  );
+}
 
 export const camel2Dash = (str: string) =>
   str
