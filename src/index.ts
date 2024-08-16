@@ -51,6 +51,14 @@ export default function lucideReactNativeImport({
           }
         }
       },
+      ExportAllDeclaration(path) {
+        let { node } = path;
+        if (node.source && node.source.value === LUCIDE_REACT_NATIVE) {
+          throw new Error(
+            `\`export * from "${LUCIDE_REACT_NATIVE}"\` defeats the purpose of babel-plugin-${LUCIDE_REACT_NATIVE}`
+          );
+        }
+      },
     },
   };
 }
