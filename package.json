@@ -41,6 +41,8 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@babel/plugin-syntax-jsx": "^7.24.7",
+    "@types/babel__helper-module-imports": "^7.18.3",
     "@types/node": "^20.14.15",
     "babel-plugin-tester": "^11.0.4",
     "kcd-scripts": "^16.0.0",
@@ -48,6 +50,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@babel/helper-module-imports": "^7.24.7",
     "@babel/runtime": "^7.25.0"
   }
 }

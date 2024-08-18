@@ -1,1 +1,8 @@
-import { Star, BookHeart, Trash2 } from "lucide-react-native";
+import { Star } from "lucide-react-native";
+function App() {
+  return (
+    <div>
+      <Star />
+    </div>
+  );
+}

@@ -7,4 +7,7 @@ pluginTester({
   plugin,
   pluginName: LUCIDE_REACT_NATIVE,
   fixtures: path.join(__dirname, "fixtures"),
+  babelOptions: {
+    plugins: ["@babel/plugin-syntax-jsx"],
+  },
 });

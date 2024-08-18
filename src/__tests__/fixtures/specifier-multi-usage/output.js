@@ -3,6 +3,8 @@ function App() {
   return (
     <div>
       <_Star />
+      <div>some thing</div>
+      <_Star />
     </div>
   );
 }
