@@ -4,8 +4,13 @@
 
 # babel-plugin-lucide-react-native
 
-> &#x26A0;&#xFE0F;**WARNING:** This plugin is work in progress and may not be stable. Use at your own risk.<br/>
-> 👏 Welcome to contribute to this project!
+English | [中文](./docs/README_zh-CN.md)
+
+> 🎉 **v1.0.0** The plugin released first stable version! This version covered most usage scenes. [See full usage cases](./src/__tests__/fixtures/) <br/>
+> 🐛 **Bugs:** Please file an issue for bugs, missing documentation, or unexpected behavior. <br/>
+> 💡 **Feature Requests:** Please file an issue to suggest new features. <br/>
+> ⭐ **Star Welcome！If this plugin helped you, please give me a star❤️**
+
 
 ## 📖 Documentation
 
@@ -84,4 +89,6 @@ when `useES` is set to `true`, it will use `lucide-react-native/dist/esm/` inste
 
 ---
 
-### Inspired by [babel-plugin-ramda](https://github.com/megawac/babel-plugin-ramda)
+### Inspiration
+
+This is inspired by [babel-plugin-ramda](https://github.com/megawac/babel-plugin-ramda)
