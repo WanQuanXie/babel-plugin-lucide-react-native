@@ -1,12 +1,12 @@
+# babel-plugin-lucide-react-native
+
 [![GitHub License](https://img.shields.io/github/license/WanQuanXie/babel-plugin-lucide-react-native?style=flat-square&logo=github)](https://github.com/WanQuanXie/babel-plugin-lucide-react-native?tab=MIT-1-ov-file)
 [![Codecov (with branch)](https://img.shields.io/codecov/c/github/WanQuanXie/babel-plugin-lucide-react-native/main?token=4X2JMZOUIS&style=flat-square&logo=codecov)](https://codecov.io/github/WanQuanXie/babel-plugin-lucide-react-native)
 [![NPM Version](https://img.shields.io/npm/v/babel-plugin-lucide-react-native?style=flat-square&logo=npm&logoColor=%23CB3837)](https://www.npmjs.com/package/babel-plugin-lucide-react-native)
 
-# babel-plugin-lucide-react-native
-
 English | [中文](./docs/README_zh-CN.md)
 
-> 🎉 **v1.0.0** The plugin released first stable version! This version covered most usage scenes. [See full usage cases](./src/__tests__/fixtures/) <br/>
+> 🎉 **v1.0.0** The plugin released first stable version! This version covered most usage scenes. [full usage cases](./src/__tests__/fixtures/) <br/>
 > 🐛 **Bugs:** Please file an issue for bugs, missing documentation, or unexpected behavior. <br/>
 > 💡 **Feature Requests:** Please file an issue to suggest new features. <br/>
 > ⭐ **Star Welcome！If this plugin helped you, please give me a star❤️**

@@ -1,12 +1,12 @@
+# babel-plugin-lucide-react-native
+
 [![GitHub License](https://img.shields.io/github/license/WanQuanXie/babel-plugin-lucide-react-native?style=flat-square&logo=github)](https://github.com/WanQuanXie/babel-plugin-lucide-react-native?tab=MIT-1-ov-file)
 [![Codecov (with branch)](https://img.shields.io/codecov/c/github/WanQuanXie/babel-plugin-lucide-react-native/main?token=4X2JMZOUIS&style=flat-square&logo=codecov)](https://codecov.io/github/WanQuanXie/babel-plugin-lucide-react-native)
 [![NPM Version](https://img.shields.io/npm/v/babel-plugin-lucide-react-native?style=flat-square&logo=npm&logoColor=%23CB3837)](https://www.npmjs.com/package/babel-plugin-lucide-react-native)
 
-# babel-plugin-lucide-react-native
-
 [English](../README.md) | 中文
 
-> 🎉 **v1.0.0** 插件第一个稳定版本终于发布了! 这个版本包含了大部分常见的使用场景。 [点击查看当前版本支持的完整场景用例](./src/__tests__/fixtures/) <br/>
+> 🎉 **v1.0.0** 插件第一个稳定版本终于发布了! 这个版本包含了大部分常见的使用场景。 [完整场景用例](./src/__tests__/fixtures/) <br/>
 > 🐛 **Bugs:** 如果在使用过程中遇到了文档未说明的、未知的异常，给我提一个 bugs issue，我会保持跟进。 <br/>
 > 💡 **Feature Requests** 如果有新的使用场景需要支持，请提一个 feature issue。 <br/>
 > ⭐ **Star Welcome！如果喜欢这个插件，还请不吝 star，以资鼓励，感谢感谢~❤️**
