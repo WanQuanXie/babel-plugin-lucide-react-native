@@ -1,8 +1,7 @@
-import type babelCore from "@babel/core";
 import { addDefault } from "@babel/helper-module-imports";
 import { LUCIDE_REACT_NATIVE } from "./const";
 import { resolveModule } from "./modules";
-import type { Scope } from "@babel/traverse";
+import type babelCore from "@babel/core";
 
 type Core = typeof babelCore;
 
@@ -10,7 +9,7 @@ function isSpecialTypes(t: Core["types"], node: babelCore.Node) {
   return t.isMemberExpression(node) || t.isProperty(node);
 }
 
-interface Config {
+interface Config extends babelCore.PluginPass {
   opts: {
     useES?: boolean;
   };
@@ -34,21 +33,22 @@ export default function lucideReactNativeImport({
   function importMethod(
     useES: boolean,
     iconName: string,
-    file: babelCore.BabelFile,
+    nodePath: babelCore.NodePath,
     nameHint: string
   ) {
     const existedImport = selectedIcons[iconName];
 
-    if (!existedImport) {
-      const moduleSource = resolveModule(useES, iconName);
-      const defaultImportIdentifier = addDefault(file.path, moduleSource, {
-        nameHint,
-      });
-      selectedIcons[iconName] = defaultImportIdentifier;
-      return t.cloneNode(defaultImportIdentifier);
-    } else {
+    if (existedImport) {
       return t.cloneNode(existedImport);
     }
+
+    const moduleSource = resolveModule(useES, iconName);
+    const defaultImportIdentifier = addDefault(nodePath, moduleSource, {
+      nameHint,
+    });
+    selectedIcons[iconName] = defaultImportIdentifier;
+
+    return t.cloneNode(defaultImportIdentifier);
   }
 
   function matchesLucideIcon(path: babelCore.NodePath, iconLocalName: string) {
@@ -59,7 +59,7 @@ export default function lucideReactNativeImport({
   }
 
   function hasBindingOfType(
-    scope: Scope,
+    scope: babelCore.NodePath["scope"],
     iconLocalName: string,
     type: babelCore.NodePath["type"]
   ) {
@@ -104,7 +104,7 @@ export default function lucideReactNativeImport({
         }
       },
       ExportNamedDeclaration(path, state) {
-        const { node, hub } = path;
+        const { node } = path;
         const { useES = false } = state.opts;
 
         // handle directly re-exporting from lucide-react-native
@@ -129,7 +129,7 @@ export default function lucideReactNativeImport({
             const importIdentifier = importMethod(
               useES,
               localName,
-              hub["file"],
+              path,
               exportedName
             );
 
@@ -153,7 +153,7 @@ export default function lucideReactNativeImport({
         }
       },
       JSXIdentifier(path, state) {
-        const { node, hub, parent } = path;
+        const { node, parent } = path;
 
         const { name: localName } = node;
         const { useES = false } = state.opts;
@@ -168,14 +168,14 @@ export default function lucideReactNativeImport({
           const newNode = importMethod(
             useES,
             iconImportedName,
-            hub["file"],
+            path,
             localName
           );
           path.replaceWith(t.jsxIdentifier(newNode.name));
         }
       },
       Identifier(path, state) {
-        const { node, hub, parent } = path;
+        const { node, parent } = path;
 
         const { name: localName } = node;
         const { useES = false } = state.opts;
@@ -190,7 +190,7 @@ export default function lucideReactNativeImport({
           const newNode = importMethod(
             useES,
             iconImportedName,
-            hub["file"],
+            path,
             localName
           );
           path.replaceWith({ type: newNode.type, name: newNode.name });
