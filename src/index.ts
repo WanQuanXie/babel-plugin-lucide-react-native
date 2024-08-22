@@ -5,6 +5,10 @@ import type babelCore from "@babel/core";
 
 type Core = typeof babelCore;
 
+// for better type hinting
+const createNullObj = () =>
+  Object.create(null) as unknown as Record<string, never>;
+
 function isSpecialTypes(t: Core["types"], node: babelCore.Node) {
   return t.isMemberExpression(node) || t.isProperty(node);
 }
@@ -24,9 +28,9 @@ export default function lucideReactNativeImport({
 }: Core): babelCore.PluginObj<Config> {
   // Track the icons that have already been used to prevent dupe imports
   let selectedIcons: Record<IconName, babelCore.types.Identifier> =
-    Object.create(null);
+    createNullObj();
   let specifiedLocal4Imported: Record<LocalName, ImportedName> =
-    Object.create(null);
+    createNullObj();
   let removablePaths: babelCore.NodePath[] = [];
 
   // Import a Lucide icon and return the computed import identifier
@@ -74,8 +78,8 @@ export default function lucideReactNativeImport({
     visitor: {
       Program: {
         enter() {
-          selectedIcons = Object.create(null);
-          specifiedLocal4Imported = Object.create(null);
+          selectedIcons = createNullObj();
+          specifiedLocal4Imported = createNullObj();
           removablePaths = [];
         },
         exit() {

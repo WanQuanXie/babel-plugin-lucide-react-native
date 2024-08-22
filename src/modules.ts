@@ -20,8 +20,8 @@ export const resolveModule = (useES: boolean, name: string) => {
 
   const icons = fs
     .readdirSync(path.join(lucideIconsRealPath, `${moduleDir}/icons`))
-    .filter((name) => path.extname(name) === ".js")
-    .map((name) => path.basename(name, ".js"));
+    .filter((n) => path.extname(n) === ".js")
+    .map((n) => path.basename(n, ".js"));
 
   if (icons.includes(iconFileName)) {
     return `${iconFileSubRelativePath}/${moduleDir}/icons/${iconFileName}`;
